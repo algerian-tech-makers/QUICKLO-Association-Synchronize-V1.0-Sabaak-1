@@ -4,6 +4,7 @@ import Home from './Home';
 import Profile from './Profile';
 import Notifications from './Notifications';
 import Donate from './Donate';
+import Activity from './Activity';
 
 const Tab = createBottomTabNavigator();
 
@@ -28,7 +29,7 @@ function Tabs() {
       />
       <Tab.Screen
         name="Notifications"
-        component={Notifications}
+        component={Activity}
         options={{
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="bell" color={color} size={size} />
