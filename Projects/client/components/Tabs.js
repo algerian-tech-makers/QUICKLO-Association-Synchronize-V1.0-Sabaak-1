@@ -14,6 +14,7 @@ function Tabs() {
       screenOptions={{
         tabBarActiveTintColor: '#00A5E0',
         tabBarShowLabel: false,
+        headerShown: false
       }}
     >
       <Tab.Screen
