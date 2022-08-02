@@ -5,6 +5,7 @@ import Profile from './Profile';
 import Notifications from './Notifications';
 import Donate from './Donate';
 import Activity from './Activity';
+import CreateAssociation from './CreateAssociation';
 
 const Tab = createBottomTabNavigator();
 
@@ -54,6 +55,11 @@ function Tabs() {
           ),
         }}
       />
+      <Tab.Screen
+        name="association"
+        component={CreateAssociation}
+      />
+      
     </Tab.Navigator>
   );
 }
