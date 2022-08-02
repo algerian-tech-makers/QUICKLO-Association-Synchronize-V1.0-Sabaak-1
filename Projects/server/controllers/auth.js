@@ -54,9 +54,9 @@ export async function signup(req, res) {
     });
 
     createToken(user._id, res);
-    createRefreshToken(user._id, res);
+    await createRefreshToken(user._id, res);
 
-    res.status(201).json({
+    return res.status(201).json({
       success: true,
       data: { username: user.username, id: user._id },
     });
@@ -99,9 +99,14 @@ export async function logout(req, res) {
     res.cookie("jwt_refresh", "", { maxAge: 1 });
     //removes refresh token from db
     const refreshCookie = req.cookies.jwt_refresh;
-    const { id } = jwt.decode(refreshCookie);
+    const decoded = jwt.decode(refreshCookie);
+    if (!decoded)
+      return res
+        .status(400)
+        .json({ success: true, message: "you are already logged out" });
+
     await RefreshTokens.updateOne(
-      { id },
+      { id: decoded.id },
       {
         $pull: { tokens: refreshCookie },
       }
@@ -125,7 +130,7 @@ export async function tokenRefresh(req, res) {
       return res.status(400).json({ success: false, message: "no token" });
 
     const verefiedToken = jwt.verify(token, process.env.JWT_REFRESH_KEY);
-    const userTokens = await RefreshTokens.findById(verefiedToken.id);
+    const userTokens = await RefreshTokens.findOne({ id: verefiedToken.id });
     if (!userTokens?.tokens.includes(token))
       return res
         .status(403)
@@ -136,7 +141,6 @@ export async function tokenRefresh(req, res) {
       .status(200)
       .json({ success: true, message: "token has been refreshed" });
   } catch (error) {
-    console.log(e.message);
     return res.status(500).json({
       success: false,
       message: "internal server error, try again later",
