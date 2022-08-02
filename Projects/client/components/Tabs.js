@@ -5,6 +5,7 @@ import Profile from './Profile';
 import Notifications from './Notifications';
 import Donate from './Donate';
 import Activity from './Activity';
+import Congragulations from './Congragulations';
 
 const Tab = createBottomTabNavigator();
 
@@ -53,6 +54,11 @@ function Tabs() {
             <AntDesign name="setting" color={color} size={size} />
           ),
         }}
+      />
+      <Tab.Screen
+        name="congrats"
+        component={Congragulations}
+        
       />
     </Tab.Navigator>
   );
