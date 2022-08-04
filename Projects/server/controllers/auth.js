@@ -4,9 +4,19 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import RefreshTokens from "../models/Tokens.js";
 import { createToken, createRefreshToken } from "../helpers/tokenCreate.js";
+import sharp from "sharp";
 
 export async function signup(req, res) {
   const { email, password } = req.body;
+  if (req.file) {
+    const fileName = `${Date.now()}.jpg`;
+    await sharp(req.file.buffer)
+      .resize(800, 800)
+      .jpeg({ quality: 60 })
+      .toFile(path.join("public", "uploads", fileName));
+    req.body.profile_picture = fileName;
+  }
+
   try {
     const exist = await User.findOne({ email: email });
     if (exist)
