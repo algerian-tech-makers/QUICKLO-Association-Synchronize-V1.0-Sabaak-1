@@ -7,7 +7,7 @@ import Donate from './Donate';
 import Activity from './Activity';
 import CreateAssociation from './CreateAssociation';
 import OneStepLeft from './OneStepLeft';
-import Congragulations from './Congragulations';
+import Congratulations from './Congratulations';
 import Donation from './Donation';
 
 const Tab = createBottomTabNavigator();
@@ -60,7 +60,7 @@ function Tabs() {
       />
       <Tab.Screen
         name="association"
-        component={CreateAssociation}
+        component={Congratulations}
       />
     </Tab.Navigator>
   );

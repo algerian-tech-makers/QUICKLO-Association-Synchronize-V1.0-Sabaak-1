@@ -1,11 +1,11 @@
 import React from 'react';
 import { Text, View,StyleSheet,Platform,StatusBar, Image,Dimensions } from 'react-native';
 
-function Congragulations() {
+function Congratulations() {
     return (
         <View style={styles.content}>
             <Image style={{width:25}} source={require('../assets/ArrowLeft.png')} />
-            <Text style={styles.head} >Congragulations</Text>
+            <Text style={styles.head} >Congratulations</Text>
             <Text style={styles.textFinish} >You have finished !</Text>
             <Image style={styles.CongratsPhoto} source={require('../assets/congtasImg.png')} />
         </View>
@@ -37,4 +37,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Congragulations;
+export default Congratulations;
