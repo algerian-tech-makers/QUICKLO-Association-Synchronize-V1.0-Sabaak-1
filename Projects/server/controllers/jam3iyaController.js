@@ -1,6 +1,6 @@
 import Association from "../models/Association.js";
 import sharp from "sharp";
-import mongoose from "mongoose";
+
 const getAllJam3iya = async (req, res) => {
   try {
     const jam3iyat = await Association.find({}).sort({ createdAt: -1 });
@@ -12,7 +12,7 @@ const getAllJam3iya = async (req, res) => {
 
 const getJam3iyaById = async (req, res) => {
   try {
-    const jam3iya = await Association.findOne({ _id: req.verifiedID });
+    const jam3iya = await Association.findOne({ _id: req.params.id });
     if (jam3iya) {
       return res.status(201).json({ success: true, data: jam3iya });
     }
@@ -23,6 +23,31 @@ const getJam3iyaById = async (req, res) => {
     res.status(500).json({ success: false, message: err.message });
   }
 };
+
+export const getJam3iyaByFilter = async (req, res) => {
+  const { categories, location, name } = req.query;
+
+  const filter = {};
+  categories && (filter.categories = { $in: categories });
+  location && (filter.location = location);
+  name && (filter["$text"] = { $search: name });
+
+  let textFilter = {};
+  name && (textFilter = { score: { $meta: "textScore" } });
+
+  try {
+    const jam3iya = await Association.find(filter, textFilter).sort(textFilter);
+    if (jam3iya) {
+      return res.status(201).json({ success: true, data: jam3iya });
+    }
+    res
+      .status(404)
+      .json({ success: false, message: "Jam3iya can not be found!" });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
 
 const createJam3iya = async (req, res) => {
   if (req.file) {

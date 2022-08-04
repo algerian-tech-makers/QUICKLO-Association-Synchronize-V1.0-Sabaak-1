@@ -12,13 +12,10 @@ const schema = new mongoose.Schema(
       type: mongoose.Schema.Types.String,
       required: true,
       unique: true,
-<<<<<<< HEAD
     },
     password: {
       type: String,
       required: true,
-=======
->>>>>>> back/abdessamed/jam3iya_crud
     },
     birthday: {
       type: mongoose.Schema.Types.Date,
@@ -30,20 +27,13 @@ const schema = new mongoose.Schema(
       default: "user",
       required: true,
     },
-    localisation: {
+    location: {
       type: mongoose.Schema.Types.String,
       required: true,
-<<<<<<< HEAD
     },
     profile_picture: {
       type: mongoose.Schema.Types.String,
     },
-=======
-    },
-    pfp: {
-      type: mongoose.Schema.Types.String,
-    },
->>>>>>> back/abdessamed/jam3iya_crud
   },
   { timestamps: true }
 );
