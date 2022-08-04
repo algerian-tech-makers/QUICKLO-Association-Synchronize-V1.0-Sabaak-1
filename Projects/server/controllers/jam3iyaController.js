@@ -36,6 +36,7 @@ const createJam3iya = async (req, res) => {
   }
 
   try {
+    req.cleanData.owner_id = req.user_id;
     const newJam3iya = await Jam3iya.create(req.cleanData);
     res.status(200).json({ success: true, data: newJam3iya });
   } catch (err) {
@@ -70,4 +71,47 @@ const updateJam3iya = async (req, res) => {
     res.status(500).json({ success: false, message: err.message });
   }
 };
-export { getAllJam3iya, getJam3iyaById, createJam3iya, updateJam3iya };
+
+const followJam3iya = async (req, res) => {
+  try {
+    const isFollwed = await Jam3iya.findOne({ _id: req.params.id });
+    if (isFollwed.followers.includes(req.user_id)) {
+      await Jam3iya.findOneAndUpdate(
+        { _id: req.params.id },
+        { $pull: { followers: req.user_id } }
+      );
+      res
+        .status(200)
+        .json({ success: true, data: "Succefully unfollowed the Jam3iya" });
+    }
+    await Jam3iya.findOneAndUpdate(
+      { _id: req.params.id },
+      { $push: { followers: req.user_id } }
+    );
+    res
+      .status(200)
+      .json({ success: true, data: "Succefully followed the Jam3iya" });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+const reviewJam3iya = async (req, res) => {
+  try {
+    const jam3iya = await Jam3iya.findOne({ _id: req.params.id });
+    req.body.user_id = req.user_id;
+    await jam3iya.reviews.push(req.body);
+    res.status(201).json({ success: true, data: jam3iya.reviews });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+export {
+  getAllJam3iya,
+  getJam3iyaById,
+  createJam3iya,
+  updateJam3iya,
+  followJam3iya,
+  reviewJam3iya,
+};

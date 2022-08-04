@@ -2,6 +2,21 @@ import mongoose from "mongoose";
 const COLLECTION_NAME = "associations";
 const DOCUMENT_NAME = "Jam3iya";
 
+const reviewsSchema = new mongoose.Schema(
+  {
+    user_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+    },
+    rating: {
+      type: Number,
+      enum: [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5],
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
+
 const schema = new mongoose.Schema(
   {
     name: {
@@ -15,8 +30,9 @@ const schema = new mongoose.Schema(
     },
     activities: [mongoose.Schema.Types.ObjectId],
     logo: String,
-    followed: [mongoose.Schema.Types.ObjectId],
+    followers: [mongoose.Schema.Types.ObjectId],
     categories: [String],
+    reviews: [reviewsSchema]
   },
   {
     timestamps: true,

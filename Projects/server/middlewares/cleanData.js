@@ -2,7 +2,7 @@ import sanitizeHTML from "sanitize-html";
 
 const cleanJam3iyaData = (req, res, next) => {
   if (typeof req.body.name !== "string")
-    return res.status(500).json({ success: false, message: "Bad data" });
+    return res.status(400).json({ success: false, message: "Bad data" });
 
   req.cleanData = {
     ...req.body,
@@ -18,7 +18,7 @@ const cleanActivityData = (req, res, next) => {
     typeof req.body.title !== "string" ||
     typeof req.body.content !== "string"
   )
-    return res.status(500).json({ success: false, message: "Bad data" });
+    return res.status(400).json({ success: false, message: "Bad data" });
   req.cleanData = {
     ...req.body,
     title: sanitizeHTML(req.body.title.trim(), {
@@ -33,4 +33,28 @@ const cleanActivityData = (req, res, next) => {
   };
   next();
 };
-export { cleanJam3iyaData, cleanActivityData };
+
+const cleanDataDonation = (req, res, next) => {
+  if (typeof req.body.amount !== "number")
+    return res.status(400).json({ success: false, message: "BAD data" });
+  req.cleanData = {
+    user_id: req.user_id,
+    amount: req.body.amount,
+  };
+  next();
+};
+
+const cleanDataComments = (req, res, next) => {
+  if (typeof req.body.content !== "string")
+    return res.status(400).json({ success: false, message: "BAD data" });
+  req.cleanData = {
+    user_id: req.user_id,
+    content: sanitizeHTML(req.body.content.trim(), {
+      allowedTags: [],
+      allowedAttributes: {},
+    }),
+  };
+  next();
+};
+
+export { cleanJam3iyaData, cleanActivityData, cleanDataDonation, cleanDataComments };

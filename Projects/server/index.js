@@ -11,6 +11,7 @@ import path from "path";
 //Routes import
 import jam3iyaRoutes from "./routes/jam3iya.js";
 import activityRoutes from "./routes/activity.js";
+import getAuthUser from "./middlewares/auth.js";
 
 fse.ensureDir(path.join("public", "uploads"));
 
@@ -27,6 +28,7 @@ app.use(express.static("public"));
 
 //routing
 app.use("/auth", authRouter);
+app.use(getAuthUser);
 app.use("/api/jam3iya", jam3iyaRoutes);
 app.use("/api/activity", activityRoutes);
 

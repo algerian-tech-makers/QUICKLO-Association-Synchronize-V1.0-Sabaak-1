@@ -51,9 +51,32 @@ const createActivity = async (req, res) => {
     res.status(500).json({ success: false, message: err.message });
   }
 };
+
+const donateActivity = async (req, res) => {
+  try {
+    const activity = await Activity.findOneAndUpdate({ _id: req.params.id });
+    await activity.donations.push(req.cleanData);
+    res.status(201).json({ success: true, data: activity });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+const commentOnActivity = async (req, res) => {
+  try {
+    const activity = await Activity.findOneAndUpdate({ _id: req.params.id });
+    await activity.comments.push(req.cleanData);
+    res.status(201).json({ success: true, data: activity });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
 export {
   getAllJam3iyaActivities,
   getAllActivities,
   createActivity,
   getActivityById,
+  donateActivity,
+  commentOnActivity,
 };

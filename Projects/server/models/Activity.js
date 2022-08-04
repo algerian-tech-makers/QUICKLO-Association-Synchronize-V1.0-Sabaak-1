@@ -4,7 +4,7 @@ const DOCUMENT_NAME = "Activity";
 
 const commentSchema = new mongoose.Schema(
   {
-    user: {
+    user_id: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
     },
@@ -18,7 +18,7 @@ const commentSchema = new mongoose.Schema(
 
 const donationSchema = new mongoose.Schema(
   {
-    user: {
+    user_id: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
     },
