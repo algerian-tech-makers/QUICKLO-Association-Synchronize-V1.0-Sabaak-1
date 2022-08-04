@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const COLLECTION_NAME = "associations";
+const COLLECTION_NAME = "jam3iya";
 const DOCUMENT_NAME = "Jam3iya";
 
 const reviewsSchema = new mongoose.Schema(
@@ -28,6 +28,7 @@ const schema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       required: true,
     },
+    description: String,
     activities: [mongoose.Schema.Types.ObjectId],
     logo: String,
     followers: [mongoose.Schema.Types.ObjectId],

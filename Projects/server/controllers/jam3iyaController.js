@@ -80,11 +80,7 @@ const updateJam3iya = async (req, res) => {
   try {
     const updateJam3iya = await Jam3iya.findOneAndUpdate(
       { _id: req.params.id },
-      {
-        name: req.cleanData.name,
-        categories: req.cleanData.categories,
-        logo: req.cleanData.logo,
-      }
+      req.cleanData
     );
     if (updateJam3iya.logo) {
       await fse.remove(path.join("public", "uploads", updateJam3iya.logo));

@@ -10,6 +10,7 @@ import {
   reviewJam3iya,
 } from "../controllers/jam3iyaController.js";
 import { cleanJam3iyaData } from "../middlewares/cleanData.js";
+import { verifyJam3iyaOwner } from "../middlewares/jam3iyaOwner.js";
 import verifyID from "../middlewares/verifyID.js";
 
 const router = Router();
@@ -22,6 +23,7 @@ router.post("/", upload.single("logo"), cleanJam3iyaData, createJam3iya);
 router.put(
   "/:id",
   verifyID,
+  verifyJam3iyaOwner,
   upload.single("logo"),
   cleanJam3iyaData,
   updateJam3iya

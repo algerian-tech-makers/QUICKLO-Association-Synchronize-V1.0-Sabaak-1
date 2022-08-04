@@ -1,12 +1,16 @@
 import sanitizeHTML from "sanitize-html";
 
 const cleanJam3iyaData = (req, res, next) => {
-  if (typeof req.body.name !== "string")
+  if (typeof req.body.name !== "string" || typeof req.body.description !== "string")
     return res.status(400).json({ success: false, message: "Bad data" });
 
   req.cleanData = {
     ...req.body,
     name: sanitizeHTML(req.body.name.trim(), {
+      allowedTags: [],
+      allowedAttributes: {},
+    }),
+    description: sanitizeHTML(req.body.description.trim(), {
       allowedTags: [],
       allowedAttributes: {},
     }),
