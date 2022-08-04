@@ -5,6 +5,7 @@ import Profile from './Profile';
 import Notifications from './Notifications';
 import Donate from './Donate';
 import Activity from './Activity';
+import Congragulations from './Congragulations';
 import Donation from './Donation';
 
 const Tab = createBottomTabNavigator();
@@ -56,10 +57,9 @@ function Tabs() {
         }}
       />
       <Tab.Screen
-        name="Donation"
-        component={Donation}
+        name="congrats"
+        component={Congragulations}  
       />
-
     </Tab.Navigator>
   );
 }
