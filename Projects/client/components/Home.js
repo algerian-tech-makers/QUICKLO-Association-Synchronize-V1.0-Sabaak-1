@@ -20,50 +20,23 @@ function Activity() {
                   <Text style={{color: "#00A5E0", paddingHorizontal: 10, fontWeight: 'bold'}}>Social</Text>
                 </View>
             </View>
-            <SwiperFlatList style={{paddingHorizontal: -5}}>
-                <View style={{display: 'flex', justifyContent: 'flex-start', paddingVertical: -3, marginHorizontal: 5}}>
+            <SwiperFlatList style={styles.swiperContainer}>
+                {[1, 2, 3, 4].map((child) => (
+                    <View style={styles.sliderOneChild}>
                     <Image source={require("../assets/help.jpeg")} style={styles.imageHelp} />
                     <Text style={{marginVertical: 3, fontSize: 16, fontWeight: 'bold'}}>Cleaning Space !</Text>
                     <Text style={{marginVertical: 3}}>By Nas-Elkhir</Text>
-                </View>
-                <View style={{display: 'flex', justifyContent: 'flex-start', paddingVertical: -3, marginHorizontal: 5}}>
-                    <Image source={require("../assets/help.jpeg")} style={styles.imageHelp} />
-                    <Text style={{marginVertical: 3, fontSize: 16, fontWeight: 'bold'}}>Cleaning Space !</Text>
-                    <Text style={{marginVertical: 3}}>By Nas-Elkhir</Text>
-                </View>
-                <View style={{display: 'flex', justifyContent: 'flex-start', paddingVertical: -3, marginHorizontal: 5}}>
-                    <Image source={require("../assets/help.jpeg")} style={styles.imageHelp} />
-                    <Text style={{marginVertical: 3, fontSize: 16, fontWeight: 'bold'}}>Cleaning Space !</Text>
-                    <Text style={{marginVertical: 3}}>By Nas-Elkhir</Text>
-                </View>
-                <View style={{display: 'flex', justifyContent: 'flex-start', paddingVertical: -3, marginHorizontal: 5}}>
-                    <Image source={require("../assets/help.jpeg")} style={styles.imageHelp} />
-                    <Text style={{marginVertical: 3, fontSize: 16, fontWeight: 'bold'}}>Cleaning Space !</Text>
-                    <Text style={{marginVertical: 3}}>Nas-Elkhir</Text>
-                </View>
+                    </View>
+                ))}
             </SwiperFlatList>
             <Text style={[styles.h1, {marginVertical: 20}]} >Explore Associations</Text> 
-            <SwiperFlatList style={{paddingHorizontal: -5}}>
-                <View style={{display: 'flex', justifyContent: 'center', alignItems: 'center', paddingVertical: -3, marginHorizontal: 5}}>
-                    <Image source={require("../assets/help.jpeg")} style={styles.imageAssociation} />
-                    <Text style={{marginVertical: 3}}>Nas-Elkhir</Text>
-                </View>
-                <View style={{display: 'flex', justifyContent: 'center', alignItems: 'center', paddingVertical: -3, marginHorizontal: 5}}>
-                    <Image source={require("../assets/help.jpeg")} style={styles.imageAssociation} />
-                    <Text style={{marginVertical: 3}}>Nas-Elkhir</Text>
-                </View>
-                <View style={{display: 'flex', justifyContent: 'center', alignItems: 'center', paddingVertical: -3, marginHorizontal: 5}}>
-                    <Image source={require("../assets/help.jpeg")} style={styles.imageAssociation} />
-                    <Text style={{marginVertical: 3}}>Nas-Elkhir</Text>
-                </View>
-                <View style={{display: 'flex', justifyContent: 'center', alignItems: 'center', paddingVertical: -3, marginHorizontal: 5}}>
-                    <Image source={require("../assets/help.jpeg")} style={styles.imageAssociation} />
-                    <Text style={{marginVertical: 3}}>Nas-Elkhir</Text>
-                </View>
-                <View style={{display: 'flex', justifyContent: 'center', alignItems: 'center', paddingVertical: -3, marginHorizontal: 5}}>
-                    <Image source={require("../assets/help.jpeg")} style={styles.imageAssociation} />
-                    <Text style={{marginVertical: 3}}>Nas-Elkhir</Text>
-                </View>
+            <SwiperFlatList style={styles.swiperContainer}>
+                {[1, 2, 3, 4, 5, 6].map((child) => (
+                    <View style={{display: 'flex', justifyContent: 'center', alignItems: 'center', paddingVertical: -3, marginHorizontal: 5}}>
+                        <Image source={require("../assets/help.jpeg")} style={styles.imageAssociation} />
+                        <Text style={{marginVertical: 3}}>Nas-Elkhir</Text>
+                    </View>
+                ))}
             </SwiperFlatList>
         </View>
     );
@@ -139,10 +112,26 @@ const styles = StyleSheet.create({
         marginVertical: 3
       },
       imageAssociation: {
-        width: 52,
-        height: 52,
+        width: 60,
+        height: 60,
         borderRadius: 50,
-      }
+        // add shadows for Android only
+        elevation: 10,
+ 
+        // add shadows for iOS only
+        shadowColor: 'black',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.5
+      },
+      swiperContainer: {
+        paddingHorizontal: -5
+      },
+      sliderOneChild: {
+        display: 'flex', 
+        justifyContent: 'flex-start', 
+        paddingVertical: -3, 
+        marginHorizontal: 5
+    }
   });
   
 
