@@ -6,6 +6,8 @@ import Notifications from './Notifications';
 import Donate from './Donate';
 import Activity from './Activity';
 import OneStepLeft from './OneStepLeft';
+import Congragulations from './Congragulations';
+import Donation from './Donation';
 
 const Tab = createBottomTabNavigator();
 

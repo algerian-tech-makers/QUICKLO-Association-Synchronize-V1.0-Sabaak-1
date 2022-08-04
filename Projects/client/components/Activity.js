@@ -2,7 +2,6 @@ import React from 'react';
 import { Text, View, StyleSheet,Platform,StatusBar, Image,useWindowDimensions,TextInput,Button  } from 'react-native';
 
 function Activity() {
-    console.log('hey')
     return (
         <View style={styles.content}>
             <View style={styles.flex}>
@@ -46,8 +45,9 @@ function Activity() {
 const styles = StyleSheet.create({
     content: {
         position:'relative',
-        paddingTop:Platform.OS === 'android' ? StatusBar.currentHeight + 50 :0,
-        padding:20, 
+        paddingTop:Platform.OS === 'android' ? StatusBar.currentHeight + 30 :0,
+        paddingBottom: 20,
+        paddingHorizontal: 20, 
     },
     flex:{
         display:"flex",
