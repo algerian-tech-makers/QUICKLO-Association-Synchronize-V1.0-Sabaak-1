@@ -5,6 +5,7 @@ import Profile from './Profile';
 import Notifications from './Notifications';
 import Donate from './Donate';
 import Activity from './Activity';
+import CreateAssociation from './CreateAssociation';
 import OneStepLeft from './OneStepLeft';
 import Congragulations from './Congragulations';
 import Donation from './Donation';
@@ -58,9 +59,9 @@ function Tabs() {
         }}
       />
       <Tab.Screen
-      name="step"
-      component={OneStepLeft}
-    />
+        name="association"
+        component={CreateAssociation}
+      />
     </Tab.Navigator>
   );
 }
