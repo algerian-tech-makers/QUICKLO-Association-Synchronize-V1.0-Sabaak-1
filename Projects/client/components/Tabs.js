@@ -5,6 +5,7 @@ import Profile from './Profile';
 import Notifications from './Notifications';
 import Donate from './Donate';
 import Activity from './Activity';
+import Settings from './Settings';
 import CreateAssociation from './CreateAssociation';
 import OneStepLeft from './OneStepLeft';
 import Congratulations from './Congratulations';
@@ -42,7 +43,7 @@ function Tabs() {
       />
       <Tab.Screen
         name="Donate"
-        component={Donate}
+        component={Donation}
         options={{
           tabBarIcon: ({ color, size }) => (
             <FontAwesome5 name="donate" size={size} color={color} />
@@ -51,7 +52,7 @@ function Tabs() {
       />
       <Tab.Screen
         name="Settings"
-        component={Profile}
+        component={Settings}
         options={{
           tabBarIcon: ({ color, size }) => (
             <AntDesign name="setting" color={color} size={size} />

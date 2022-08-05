@@ -30,9 +30,9 @@ function Activity() {
                 ))}
             </SwiperFlatList>
             <Text style={[styles.h1, {marginVertical: 20}]} >Explore Associations</Text> 
-            <SwiperFlatList style={styles.swiperContainer}>
+            <SwiperFlatList style={styles.swiperContainerTwo}>
                 {[1, 2, 3, 4, 5, 6].map((child) => (
-                    <View style={{display: 'flex', justifyContent: 'center', alignItems: 'center', paddingVertical: -3, marginHorizontal: 5}}>
+                    <View style={{display: 'flex', justifyContent: 'center', alignItems: 'center', paddingVertical: -3, marginHorizontal: 10}}>
                         <Image source={require("../assets/help.jpeg")} style={styles.imageAssociation} />
                         <Text style={{marginVertical: 3}}>Nas-Elkhir</Text>
                     </View>
@@ -124,13 +124,16 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.5
       },
       swiperContainer: {
-        paddingHorizontal: -5
+        paddingHorizontal: -8
+      },
+      swiperContainerTwo: {
+        paddingHorizontal: -10
       },
       sliderOneChild: {
         display: 'flex', 
         justifyContent: 'flex-start', 
         paddingVertical: -3, 
-        marginHorizontal: 5
+        marginHorizontal: 8
     }
   });
   
