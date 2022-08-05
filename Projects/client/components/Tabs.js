@@ -34,7 +34,7 @@ function Tabs() {
       />
       <Tab.Screen
         name="Notifications"
-        component={Activity}
+        component={Notifications}
         options={{
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="bell" color={color} size={size} />
@@ -58,10 +58,6 @@ function Tabs() {
             <AntDesign name="setting" color={color} size={size} />
           ),
         }}
-      />
-      <Tab.Screen
-        name="association"
-        component={Congratulations}
       />
     </Tab.Navigator>
   );
