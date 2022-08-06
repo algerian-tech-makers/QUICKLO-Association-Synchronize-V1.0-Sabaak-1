@@ -16,7 +16,7 @@ function Activity() {
                     Activity Name
                 </Text>
                 <Text style={{ color:"#1A1B23",fontWeight:'500',fontSize:21}}>
-                    Restaurants for free !
+                    Restaurants forfree !
                 </Text>
            </View>
 
