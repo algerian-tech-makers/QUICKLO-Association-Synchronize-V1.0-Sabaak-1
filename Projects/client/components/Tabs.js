@@ -10,6 +10,8 @@ import CreateAssociation from './CreateAssociation';
 import OneStepLeft from './OneStepLeft';
 import Congratulations from './Congratulations';
 import Donation from './Donation';
+import VerifPassword from './VerifPassword';
+import PaymentHist from './PaymentHist';
 
 const Tab = createBottomTabNavigator();
 
@@ -59,6 +61,15 @@ function Tabs() {
           ),
         }}
       />
+      <Tab.Screen
+      name="verifPass"
+      component={VerifPassword}
+    />
+
+    <Tab.Screen
+      name="paymentHist"
+      component={PaymentHist}
+    />
     </Tab.Navigator>
   );
 }

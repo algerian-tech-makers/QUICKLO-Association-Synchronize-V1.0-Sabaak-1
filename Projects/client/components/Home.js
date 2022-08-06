@@ -22,7 +22,7 @@ function Activity() {
             </View>
             <SwiperFlatList style={styles.swiperContainer}>
                 {[1, 2, 3, 4].map((child) => (
-                    <View style={styles.sliderOneChild}>
+                    <View style={styles.sliderOneChild}  >
                     <Image source={require("../assets/help.jpeg")} style={styles.imageHelp} />
                     <Text style={{marginVertical: 3, fontSize: 16, fontWeight: 'bold'}}>Cleaning Space !</Text>
                     <Text style={{marginVertical: 3}}>By Nas-Elkhir</Text>
