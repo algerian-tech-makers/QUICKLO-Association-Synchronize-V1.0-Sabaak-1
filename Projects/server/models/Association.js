@@ -13,6 +13,10 @@ const reviewsSchema = new mongoose.Schema(
       enum: [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5],
       required: true,
     },
+    content: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );

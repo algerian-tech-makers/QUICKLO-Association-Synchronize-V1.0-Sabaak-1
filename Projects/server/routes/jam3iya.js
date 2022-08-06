@@ -9,7 +9,7 @@ import {
   followJam3iya,
   reviewJam3iya,
 } from "../controllers/jam3iyaController.js";
-import { cleanJam3iyaData } from "../middlewares/cleanData.js";
+import { cleanJam3iyaData, cleanDataReview } from "../middlewares/cleanData.js";
 import { verifyJam3iyaOwner } from "../middlewares/jam3iyaOwner.js";
 import verifyID from "../middlewares/verifyID.js";
 
@@ -30,5 +30,5 @@ router.put(
 );
 
 router.post("/follow/:id", verifyID, followJam3iya);
-router.post("/:id/review", verifyID, reviewJam3iya);
+router.post("/:id/review", verifyID, cleanDataReview, reviewJam3iya);
 export default router;

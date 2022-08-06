@@ -119,8 +119,7 @@ const followJam3iya = async (req, res) => {
 const reviewJam3iya = async (req, res) => {
   try {
     const jam3iya = await Jam3iya.findOne({ _id: req.params.id });
-    req.body.user_id = req.user_id;
-    await jam3iya.reviews.push(req.body);
+    await jam3iya.reviews.push(req.cleanData);
     res.status(201).json({ success: true, data: jam3iya.reviews });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });

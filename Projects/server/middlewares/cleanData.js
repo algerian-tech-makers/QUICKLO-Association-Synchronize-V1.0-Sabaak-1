@@ -1,7 +1,10 @@
 import sanitizeHTML from "sanitize-html";
 
 const cleanJam3iyaData = (req, res, next) => {
-  if (typeof req.body.name !== "string" || typeof req.body.description !== "string")
+  if (
+    typeof req.body.name !== "string" ||
+    typeof req.body.description !== "string"
+  )
     return res.status(400).json({ success: false, message: "Bad data" });
 
   req.cleanData = {
@@ -61,4 +64,26 @@ const cleanDataComments = (req, res, next) => {
   next();
 };
 
-export { cleanJam3iyaData, cleanActivityData, cleanDataDonation, cleanDataComments };
+const cleanDataReview = (req, res, next) => {
+  if (
+    typeof req.body.rating !== "number" ||
+    typeof req.body.content !== "string"
+  )
+    return res.status(400).json({ success: false, message: "Bad data" });
+  req.cleanData = {
+    user_id: req.user_id,
+    content: sanitizeHTML(req.body.content.trim(), {
+      allowedTags: [],
+      allowedAttributes: {},
+    }),
+  };
+  next();
+};
+
+export {
+  cleanJam3iyaData,
+  cleanActivityData,
+  cleanDataDonation,
+  cleanDataComments,
+  cleanDataReview,
+};
