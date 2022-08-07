@@ -10,6 +10,7 @@ import CreateAssociation from './CreateAssociation';
 import OneStepLeft from './OneStepLeft';
 import Congratulations from './Congratulations';
 import Donation from './Donation';
+import Association from './Association';
 
 const Tab = createBottomTabNavigator();
 
@@ -43,7 +44,7 @@ function Tabs() {
       />
       <Tab.Screen
         name="Donate"
-        component={Donation}
+        component={Association}
         options={{
           tabBarIcon: ({ color, size }) => (
             <FontAwesome5 name="donate" size={size} color={color} />
